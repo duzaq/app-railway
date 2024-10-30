@@ -1,7 +1,7 @@
 # railway.toml
 
 [project]
-name = "duzaq_n8n"
+name = "meu_projeto_n8n"
 
 [plugins]
 
@@ -22,6 +22,11 @@ variables = [
   { name = "N8N_ENCRYPTION_KEY", value = "F+n8T0pctpwp5gLqwjUGmsRZn2yrLNGz" },
   { name = "N8N_USER_MANAGEMENT_JWT_SECRET", value = "<seu_jwt_secret>" }
 ]
+# Volumes do Railway configurados aqui
+[plugins.n8n.volumes]
+n8n_storage = "/home/node/.n8n"
+backup = "/backup"
+shared = "/data/shared"
 
 [plugins.redis]
 source = "Docker"
@@ -46,3 +51,7 @@ source = "Docker"
 service = "qdrant"
 image = "qdrant/qdrant"
 variables = []
+
+# Volume do Qdrant configurado no Railway
+[plugins.qdrant.volumes]
+qdrant_storage = "/qdrant/storage"
